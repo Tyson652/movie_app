@@ -24,7 +24,8 @@
       <th>Title</th>
       <th>Content</th>
       <th>Rating</th>
-      <th colspan="3"></th>
+      <th>Author</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -34,9 +35,12 @@
         <td><%= review.title %></td>
         <td><%= review.content %></td>
         <td><%= review.rating %></td>
+        <td><%= User.find(review.user_id).name %></td>
         <%# <td><%= link_to 'Show', movie_reviews_path %></td>
+        <% if current_user.id == review.user_id %>
         <td><%= link_to 'Edit', edit_movie_review_path(review.movie, review) %></td>
-        <td><%= link_to 'Destroy', movie_review_path(review.movie, review), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <td><%= link_to 'Destroy', movie_review_path(review.movie, review), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %> 
       </tr>
     <% end %>
   </tbody>

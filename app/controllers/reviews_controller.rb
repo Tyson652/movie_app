@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /reviews
   # GET /reviews.json
   def index
@@ -33,6 +33,7 @@ class ReviewsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @review = Review.new(review_params)
     @review.movie_id = @movie.id
+    @review.user_id = current_user.id
 
     respond_to do |format|
       if @review.save
