@@ -11,10 +11,12 @@
   <%= @movie.runtime %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @movie.image %>
-</p>
+<%= image_tag(@movie.thumbnail) %>
+
+<% if current_user.id == @movie.user_id %>
+<%= link_to 'Edit', edit_movie_path(@movie) %>
+<%= link_to 'Destroy', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 
 <h2>Reviews</h2>
 
