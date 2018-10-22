@@ -13,6 +13,11 @@ p, ol, ul, td {
   line-height: 18px;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -26,10 +31,10 @@ a {
     color: #666;
   }
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+  // &:hover {
+  //   color: #fff;
+  //   background-color: #000;
+  // }
 }
 
 th {

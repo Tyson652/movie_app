@@ -5,6 +5,10 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
+    @my_movies = Movie.where(user_id: current_user)
+  end
+
+  def explore
     @movies = Movie.all
   end
 
@@ -30,7 +34,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to movie_reviews_path(@movie), notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new }
