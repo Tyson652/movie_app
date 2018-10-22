@@ -18,6 +18,11 @@
         <%= @movie.runtime %>
       </p>
 
+        <p>
+        <strong>Movie Created By:</strong>
+        <%= User.find(@movie.user_id).name %>
+      </p>
+
       <%= image_tag(@movie.thumbnail) %>
 
       <% if current_user.id == @movie.user_id %>
