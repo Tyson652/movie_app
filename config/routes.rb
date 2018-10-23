@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     member do 
       get '/reviews', to: 'reviews#index'
     end
+    member do
+      get '/likes', to: 'likes#do_id_numbers'
+    end
   end
 
   root to: 'movies#index'
