@@ -5,4 +5,8 @@ class Movie < ApplicationRecord
   def thumbnail
     return self.image.variant(resize: '300x300')
   end
+
+  def poster
+    return self.image.variant(resize: '400x400')
+  end
 end
