@@ -10,8 +10,6 @@
   </head>
 
   <body>
-    <%# <p class="notice"><%= notice %>
-    <%# <p class="alert"><%= alert %>
     <% if user_signed_in? %>
     <div class="nav_box">
       <div class="nav_p">
@@ -21,6 +19,9 @@
       <div class="nav_logout">
         <div class="button">
           <%= link_to 'My Movies', movies_path %>
+        </div>
+         <div class="button">
+          <%= link_to 'Likes', likes_path %>
         </div>
         <div class="button">
           <%= link_to 'Explore', explore_path %>

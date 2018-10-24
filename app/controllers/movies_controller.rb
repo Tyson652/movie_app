@@ -12,6 +12,11 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
+  def likes
+    @user_likes = User.find(current_user.id).likes.pluck(:movie_id)
+    @my_likes = Movie.find(@user_likes)
+  end
+
   # GET /movies/1
   # GET /movies/1.json
   def show

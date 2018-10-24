@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   has_many :reviews
+  has_many :likes
   has_one_attached :image
 
   def thumbnail

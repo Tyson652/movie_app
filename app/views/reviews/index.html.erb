@@ -28,16 +28,13 @@
           <%= User.find(@movie.user_id).name %>
         </p>
 
-        <%= form_with do |form| %>
-        <div class="field">
-          <%= form.label :Like %>
-          <%= form.check_box :Like %>
-        </div>
-        <% end %>
-        <% if :Like == true %>
-        <% puts "Yesssssssssssssss!" %>
-        <% end %>
+        <p>
+          <strong>Total Likes:</strong>
+          <%= Movie.find(params[:movie_id]).likes.count %>
+        </p>
       </div>
+
+      
       
       <div class="image">
           <% if current_user.id == @movie.user_id %>
@@ -48,8 +45,17 @@
             <div class="movie_button">
               <%= link_to 'Delete Movie', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
+            <% end %>
+            <% if @truth == true %> 
+             <div class="movie_button_liked">
+              <%= link_to 'Liked', likes_movie_path(@movie), method: :delete %>
+            </div>
+            <% else %>
+            <div class="movie_button"> 
+              <%= link_to 'Like', likes_movie_path(@movie) %>
+            </div>
+            <% end %>
           </div>
-          <% end %>
           <%= image_tag(@movie.poster) %>
       </div>
     </div>
@@ -73,7 +79,6 @@
             <td><%= review.content %></td>
             <td><%= review.rating %></td>
             <td><%= User.find(review.user_id).name %></td>
-            <%# <td><%= link_to 'Show', movie_reviews_path %></td>
             <% if current_user.id == review.user_id %>
             <td><%= link_to 'Edit', edit_movie_review_path(review.movie, review) %></td>
             <td><%= link_to 'Delete', movie_review_path(review.movie, review), method: :delete, data: { confirm: 'Are you sure?' } %></td>

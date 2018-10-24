@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%# <h1>Movies</h1> %>
+<h1>My Likes</h1>
 
 <%# <div class="button">
   <%= link_to 'New Movie', new_movie_path %>
@@ -17,7 +17,8 @@
   </thead> %>
 
   <tbody class="images_div">
-    <% @movies.each do |movie| %>
+    <%# <% @my_likes = Like.all.where(user_id: current_user.id) %> 
+    <% @my_likes.each do |movie| %>
       <tr>
         <%# <td><%= movie.title %></td> 
         <%# <td><%= movie.genre %></td> 

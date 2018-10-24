@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :like_exists
   # GET /reviews
   # GET /reviews.json
   def index
@@ -70,9 +71,9 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # def show_movie_reviews
-
-  # end
+  def like_exists
+    @truth = Like.where(user_id: current_user.id).where(movie_id: params[:movie_id]).exists?
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
