@@ -28,16 +28,13 @@
           <%= User.find(@movie.user_id).name %>
         </p>
 
-        <%= form_with do |form| %>
-        <div class="field">
-          <%= form.label :Like %>
-          <%= form.check_box :Like %>
-        </div>
-        <% end %>
-        <% if :Like == true %>
-        <% puts "Yesssssssssssssss!" %>
-        <% end %>
+        <p>
+          <strong>Total Likes:</strong>
+          <%= Movie.find(params[:movie_id]).likes.count %>
+        </p>
       </div>
+
+      
       
       <div class="image">
           <% if current_user.id == @movie.user_id %>
@@ -50,12 +47,11 @@
             </div>
             <% end %>
             <% if @truth == true %> 
-            <%# <% if Like.where(user_id: current_user.id).where(movie_id: params[:id]).exists? == true %> 
-             <div class="movie_button">
-              <%= link_to 'Liked', likes_movie_path(@movie) %>
+             <div class="movie_button_liked">
+              <%= link_to 'Liked', likes_movie_path(@movie), method: :delete %>
             </div>
             <% else %>
-            <div class="movie_button">
+            <div class="movie_button"> 
               <%= link_to 'Like', likes_movie_path(@movie) %>
             </div>
             <% end %>

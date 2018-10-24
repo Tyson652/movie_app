@@ -14,9 +14,11 @@ class LikesController < ApplicationController
     end
   end
 
-  # def like_exists
-  #   @truth = Like.where(user_id: current_user.id).where(movie_id: params[:id]).exists?
-  # end
+  def delete_like
+    @liked = Like.all.where(user_id: current_user.id).where(movie_id: params[:id]).destroy_all
+
+    redirect_to reviews_movie_path
+  end
 
 
   private
